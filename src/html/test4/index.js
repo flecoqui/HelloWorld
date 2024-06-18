@@ -1,14 +1,23 @@
-button=document.getElementById("statusButton")
 
-button.addEventListener("click", function(event) {
-    var status = document.getElementById("statusId").value;
-    if (status && status.length > 0) {
-      alert(`Hello ${status} World!`);
-    }
-    else {
-      alert('Hello  World!');
-    }
-  });
-object.addEventListener("click", myScript);
+document.addEventListener("DOMContentLoaded", function(e) {
+  var statusCtl = document.getElementById("statusId")
+  if (statusCtl){
+      statusCtl.innerHTML = "Running"
+  }
+});
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    var statusCtl = document.getElementById("statusId")
+    if (statusCtl){
+        statusCtl.innerHTML = "Not running"
+    };
+  }
+  var logCtl = document.getElementById("logId");
+  if (logCtl){
+    logCtl.innerHTML = `Key ${event.key} pressed!`
+  };
+});
+
 
 

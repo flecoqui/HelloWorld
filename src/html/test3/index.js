@@ -9,6 +9,6 @@ button.addEventListener("click", function(event) {
       alert('Hello  World!');
     }
   });
-object.addEventListener("click", myScript);
+
 
 
