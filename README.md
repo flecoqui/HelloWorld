@@ -118,7 +118,7 @@ You need to install the following pre-requisite on your machine
 
 ## C#
 
-![C# Programming Language](./docs/README/c#-lang.png)
+![C# Programming Language](./docs/README/cs-lang.png)
 
 ### Install DotNet SDK
 
