@@ -97,3 +97,81 @@ You need to install the following pre-requisite on your machine
     ```bash
         vscode ➜ /workspace/HelloWorld $ az login 
     ```
+
+## C
+
+![C Programming Language](./docs/README/c-lang.png)
+
+### Install C compilers and linkers
+
+### Sample 1: Hello World
+
+### Sample 2: Optimize size
+
+### Sample 3: Enter risky string
+
+### Sample 4: Enter secure string
+
+### Sample 5: Key Stroke Windows in while loop
+
+### Sample 6: Key Stroke Linux in while loop
+
+## C#
+
+![C# Programming Language](./docs/README/c#-lang.png)
+
+### Install DotNet SDK
+
+### Sample 1: Hello World
+
+### Sample 2: Self Contained Binary
+
+### Sample 3: Key Stroke detection
+
+### Sample 4: Enter string
+
+### Sample 5: Key Stroke in while loop
+
+## java
+
+![Java Programming Language](./docs/README/java-lang.png)
+
+### Install Java SDK
+
+### Sample 1: Hello World
+
+### Sample 2: Self Contained Binary
+
+### Sample 3: Key Stroke detection
+
+### Sample 4: Enter string
+
+### Sample 5: Key Stroke in while loop
+
+## python
+
+![Python Programming Language](./docs/README/python-lang.png)
+
+### Install Python SDK
+
+### Sample 1: Hello World
+
+### Sample 2: Key Stroke detection
+
+### Sample 3: Enter string
+
+### Sample 4: Key Stroke in while loop
+
+## HTML/Javascript
+
+### Install HTML/Javascript SDK
+
+![HTML Programming Language](./docs/README/html-lang.png)
+
+### Sample 1: Hello World
+
+### Sample 2: Key Stroke detection
+
+### Sample 3: Enter string
+
+### Sample 4: Key Stroke in while loop
