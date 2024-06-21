@@ -256,38 +256,180 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 ```
 
+### Sample 2: Read input key
 
-### Sample 2: Optimize size
-
-**Source code: test.c**
+**Source code: [test.c](./src/c/test2/test.c)**
 
 ```c
     #include "stdio.h"
     int main()
     {
-        printf("Hello World\n");
+        char ch;
+        printf("How is the World? M: Mad, B: Beautiful \n");
+        ch=fgetc(stdin);
+        if(ch=='M'){
+            printf("Hello Mad World!\n");
+        }
+        else if(ch=='B'){
+            printf("Hello Beautiful World!\n");
+        }
+        else{
+            printf("Hello World!\n");
+        }
     }
 ```
 
-**build command to optimize size:**
+**build command:**
 
 ```bash
-    gcc test.c -o testO.exe -O2 -s
+    gcc test.c  -o test.exe 
 ```
 
-**build command to generate assembly code:**
+### Sample 3: Read input string (danger)
+
+**Source code: [test.c](./src/c/test3/test.c)**
+
+```c
+    #include "stdio.h"
+
+    int main()
+    {
+        char str[3];
+            char const *sunny = "sunny";
+        printf("How is the World?\n");
+        gets(str);
+        printf("Hello %s and %s World!\n",str,sunny);
+    }
+```
+
+**build command:**
 
 ```bash
-    gcc -o test.asm  -S  test.c
+    gcc test.c  -o test.exe 
 ```
-
-### Sample 3: Enter risky string
 
 ### Sample 4: Enter secure string
 
+**Source code: [test.c](./src/c/test4/test.c)**
+
+```c
+	#include "stdio.h"
+	#define MAX_LIMIT 3
+	int main()
+	{
+		char str[MAX_LIMIT];
+		char const *sunny = "sunny";
+		printf("How is the World?\n");
+		fgets(str, MAX_LIMIT, stdin);
+		printf("Hello %s and %s World!\n",str,sunny);
+	}
+```
+
+**build command:**
+
+```bash
+    gcc test.c  -o test.exe 
+```
+
 ### Sample 5: Key Stroke Windows in while loop
 
+**Source code: [test.c](./src/c/test5/test.c)**
+
+```c
+    #include <stdio.h>
+    #include <conio.h>
+    int main()
+    {
+        printf("The World is running, press escape to exit\n");
+        while (1) {
+            if ( kbhit() ) {
+                int ch;
+                ch = getch();
+                if (ch == 0x1B){
+                    printf("ESC key pressed, exit\n");
+                    break;
+                }
+                else
+                    printf("Key pressed = '%c'\n",ch);
+            }
+        }
+        return 0;
+    }
+```
+
+**build command:**
+
+```bash
+    gcc test.c  -o test.exe 
+```
+
+
+
 ### Sample 6: Key Stroke Linux in while loop
+
+**Source code: [test.c](./src/c/test6/test.c)**
+
+```c
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <string.h>
+    #include <termios.h>
+    #include <ctype.h>
+    #include <sys/ioctl.h>
+    #include <unistd.h>
+    int kbhit()
+    {
+        int byteswaiting;
+        ioctl(STDIN_FILENO, FIONREAD, &byteswaiting);
+        return byteswaiting;
+    }
+    int getch(void)
+    {
+        int ch;
+        ch = getchar();
+        return ch;
+    }
+    void enable_raw_mode()
+    {
+        struct termios term;
+        tcgetattr(STDIN_FILENO, &term);
+        term.c_lflag &= ~(ICANON | ECHO); // Disable echo as well
+        tcsetattr(STDIN_FILENO, TCSANOW, &term);
+    }
+    void disable_raw_mode()
+    {
+        struct termios term;
+        tcgetattr(STDIN_FILENO, &term);
+        term.c_lflag |= ICANON | ECHO;
+        tcsetattr(STDIN_FILENO, TCSANOW, &term);
+    }
+    int main()
+    {
+        char ch;
+        printf("The World is running, press escape to exit\n");
+        enable_raw_mode();
+        while (1) {
+            if ( kbhit() ) {
+            ch = getch();
+                if (ch == 0x1B){
+                    printf("ESC key pressed, exit\n");
+                    break;
+                }
+                else
+                    printf("Key pressed = '%c'\n",ch);
+            }
+        }
+        disable_raw_mode();
+        return 0;
+    }
+```
+
+**build command:**
+
+```bash
+    gcc test.c  -o test.exe 
+```
+
 
 ## C#
 
