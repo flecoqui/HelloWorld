@@ -753,21 +753,119 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
     dotnet run
 ```
 
-## python
+## Python Programming Language
 
 ![Python Programming Language](./docs/README/python-lang.png)
 
-### Install Python SDK
+### Install Python SDK 3.10
+
+1. Download Python SDK 3.10 for Windows fromhttps://www.python.org/downloads/windows/
+2. Follow the steps to install Python SDK 3.10 on Windows
+
+### Install Python SDK 3.10 on Linux
+
+1. Run the following commands to install Python SDK v3.10 on Linux
+
+```bash
+    sudo apt update
+    sudo apt install software-properties-common -y
+    sudo add-apt-repository ppa:deadsnakes/ppa
+    sudo apt update
+    sudo apt install python3.10 python3.10-venv python3.10-dev
+    python3 --version
+    ls -la /usr/bin/python3
+    sudo rm /usr/bin/python3
+    sudo ln -s python3.10 /usr/bin/python3
+    python3 --version
+    curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
+    python3 -m pip --version
+    python3.10 -m pip install ipython
+    python3.10 -m venv venv
+    pip install ipython
+```
 
 ### Sample 1: Hello World
 
+**Source code: [test.sh](./src/python/test1/test.py)**
+
+```python
+    print("Hello World")
+```
+
+**Run command:**
+
+```bash
+    python ./test.py
+```
+
 ### Sample 2: Key Stroke detection
+
+**Source code: [test.sh](./src/python/test2/test.py)**
+
+```python
+    from getkey import getkey
+
+    print("How is the World? M: Mad, B: Beautiful")
+    key = getkey()
+    if key == "M":
+        print("Hello Mad World!")
+    else:
+        if key == "B":
+            print("Hello Beautiful World!")
+        else:
+            print("Hello World!")
+```
+
+**Run command:**
+
+```bash
+    python ./test.py
+```
 
 ### Sample 3: Enter string
 
+**Source code: [test.sh](./src/python/test3/test.py)**
+
+```python
+    sunny = "sunny"
+    str = input("How is the World?\n")
+    if not str.split(): 
+        print(f"Hello {sunny} World!")
+    else:
+        print(f"Hello {str} and {sunny} World!")    
+```
+
+**Run command:**
+
+```bash
+    python ./test.py
+```
+
 ### Sample 4: Key Stroke in while loop
 
-## HTML/Javascript
+**Source code: [test.sh](./src/python/test4/test.py)**
+
+```python
+    from getkey import getkey
+
+    print("The World is running, press escape to exit?")
+    while True:
+        key = getkey()
+        if ord(key) == 27:
+            print("ESC key pressed, exit!")
+            break
+        else:
+            print(f"Key pressed = {key} ")
+```
+
+**Build and Run command:**
+
+```bash
+    pip install getkey
+    python ./test.py
+```
+
+## HTML/Javascript Programming Language
 
 ### Install HTML/Javascript SDK
 
