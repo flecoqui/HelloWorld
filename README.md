@@ -98,7 +98,17 @@ You need to install the following pre-requisite on your machine
         vscode ➜ /workspace/HelloWorld $ az login 
     ```
 
-## C
+## Programming Languages Overview
+
+The subsequent chapters describe how to write basic applications in different programming language.
+For each language, a bash file (Linux) or a command file (Windows) is available to install the tools associated with the programming language on Linux or Windows.
+
+- ./src/[Programming Language Name]/install.cmd: Installation script on Windows
+- ./src/[Programming Language Name]/install.sh: Installation script on Linux
+
+Moreover, for each language, a serie of samples is available and for each sample bash files called build.sh and run.sh are available to build and run the sample application.  
+
+## C Programming Language
 
 ![C Programming Language](./docs/README/c-lang.png)
 
@@ -430,38 +440,318 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
     gcc test.c  -o test.exe 
 ```
 
-
-## C#
-
-![C# Programming Language](./docs/README/cs-lang.png)
-
-### Install DotNet SDK
-
-### Sample 1: Hello World
-
-### Sample 2: Self Contained Binary
-
-### Sample 3: Key Stroke detection
-
-### Sample 4: Enter string
-
-### Sample 5: Key Stroke in while loop
-
-## java
+## Java Programming Language
 
 ![Java Programming Language](./docs/README/java-lang.png)
 
 ### Install Java SDK
 
+#### Install Java SDK on Windows
+
+1. Download the JDK version 21 from there: https://www.oracle.com/java/technologies/downloads/#jdk21-windows
+2. Follow the steps to install the JDK on your local machine  
+
+#### Install Java SDK on Linux
+
+1. Download the JDK version 21 running the following command in a terminal:
+
+```bash
+    sudo wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
+```
+
+2. Run the following command to install the JDK 21 on your machine running Linux  
+
+```bash
+    sudo dpkg -i jdk-21_linux-x64_bin.deb
+```
+
 ### Sample 1: Hello World
+
+**Source code: [test.java](./src/java/test1/test.java)**
+
+```java
+    class Program
+    { 
+        public static void main(String []args) 
+        { 
+            System.out.println("Hello world"); 
+        } 
+    } 
+```
+
+**build and run commands:**
+
+```bash
+    javac -d bin test.java
+    java test.java
+```
+
+### Sample 2: Key String detection
+
+**Source code: [test.java](./src/java/test2/test.java)**
+
+```java
+    import java.util.Scanner; 
+
+    class Program
+    { 
+        public static void main(String []args) 
+        { 
+            System.out.println("How is the World? M: Mad, B: Beautiful ");
+            Scanner scanner = new Scanner(System.in);
+            char ch = scanner.next().charAt(0);
+            if(ch=='M'){
+                System.out.println("Hello Mad World!\n");
+            }
+            else if(ch=='B'){
+                System.out.println("Hello Beautiful World!\n");
+            }
+            else{
+                System.out.println("Hello World!\n");
+            }
+        } 
+    }  
+```
+
+**build and run commands:**
+
+```bash
+    javac -d bin test.java
+    java test.java
+```
+
+
+### Sample 3: Enter string
+
+**Source code: [test.java](./src/java/test3/test.java)**
+
+```java
+    import java.util.Scanner; 
+    class Program
+    { 
+        public static void main(String []args) 
+        { 
+            String sunny = "sunny";
+            System.out.println("How is the World?");
+            Scanner scanner = new Scanner(System.in);
+            String str = scanner.next();
+            if (str == null || str.isEmpty() || str.trim().isEmpty()) 
+                System.out.printf("Hello %s World!\n",sunny);
+            else
+                System.out.printf("Hello %s and %s World!\n", str, sunny);        
+        } 
+    } 
+```
+
+**build and run commands:**
+
+```bash
+    javac -d bin test.java
+    java test.java
+```
+
+
+### Sample 4: Key Stroke in while loop
+
+**Source code: [test.java](./src/java/test4/test.java)**
+
+```java
+    import java.util.Scanner; 
+    class Program {
+        public static void main(String []args) 
+        {  
+            System.out.printf("The World is running, press escape to exit?");
+            while(true)
+            {
+                Scanner scanner = new Scanner(System.in);
+                char ch = scanner.next().charAt(0);
+
+                if(ch==27){
+                    System.out.printf("ESC key pressed, exit\n");
+                    break;
+                }
+                else
+                    System.out.printf("Key pressed = %c", ch);
+            }
+        } 
+    }
+```
+
+**build and run commands:**
+
+```bash
+    javac -d bin test.java
+    java test.java
+```
+
+## C# Programming Language
+
+![C# Programming Language](./docs/README/cs-lang.png)
+
+### Install DotNet SDK
+
+#### Install DotNet SDK on Windows
+
+1. Download dotnet v8 for Windows from https://dotnet.microsoft.com/en-us/download/dotnet/8.0 
+2. Follow the steps to install DotNet SDK v8.0 on Windows
+
+#### Install DotNet SDK on Linux
+
+1. Run the following commands to install DotNet SDK v8.0 on Linux
+
+```bash
+    sudo apt-get update 
+    sudo apt-get install -y apt-transport-https 
+    sudo apt-get install -y dotnet-sdk-8.0
+```
+
+### Sample 1: Hello World
+
+**Source code: [test.cs](./src/c#/test1/test.cs)**
+
+```c#
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            System.Console.WriteLine("Hello World");
+        }
+    }
+```
+
+**build and run commands:**
+
+```bash
+    dotnet restore
+    dotnet build
+    dotnet run
+```
 
 ### Sample 2: Self Contained Binary
 
+**Source code: [test.cs](./src/c#/test2/test.cs)**
+
+```c#
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            System.Console.WriteLine("Hello World");
+        }
+    }
+```
+
+**build and run commands on Linux:**
+
+```bash
+    dotnet restore
+    dotnet build --self-contained -r   linux-x64
+    ./bin/Debug/net8.0/linux-x64/test
+```
+
+**build and run commands on Windows:**
+
+```bash
+    dotnet restore
+    dotnet build --self-contained -r   win-x64
+    ./bin/Debug/net8.0/win-x64/test.exe    
+```
+
 ### Sample 3: Key Stroke detection
+
+**Source code: [test.cs](./src/c#/test3/test.cs)**
+
+```c#
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            System.Console.WriteLine("How is the World? M: Mad, B: Beautiful ");
+            while(!Console.KeyAvailable);
+            System.ConsoleKey ch = Console.ReadKey(true).Key;
+            if(ch==System.ConsoleKey.M){
+                System.Console.WriteLine("Hello Mad World!\n");
+            }
+            else if(ch==System.ConsoleKey.B){
+                System.Console.WriteLine("Hello Beautiful World!\n");
+            }
+            else{
+                System.Console.WriteLine("Hello World!\n");
+            }
+        }
+    }
+```
+
+**build and run commands:**
+
+```bash
+    dotnet restore
+    dotnet build
+    dotnet run
+```
 
 ### Sample 4: Enter string
 
+**Source code: [test.cs](./src/c#/test4/test.cs)**
+
+```c#
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            string sunny = "sunny";
+            System.Console.WriteLine("How is the World?");
+            string? str = Console.ReadLine();
+            if(string.IsNullOrEmpty(str))
+                System.Console.WriteLine($"Hello {sunny} World!");
+            else
+                System.Console.WriteLine($"Hello {str} and {sunny} World!");
+        }
+    }
+```
+
+**build and run commands:**
+
+```bash
+    dotnet restore
+    dotnet build
+    dotnet run
+```
+
 ### Sample 5: Key Stroke in while loop
+
+**Source code: [test.cs](./src/c#/test5/test.cs)**
+
+```c#
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            System.ConsoleKey ch; 
+            System.Console.WriteLine("The World is running, press escape to exit?");
+            while(true)
+            {
+                if(Console.KeyAvailable){
+                    ch = Console.ReadKey(true).Key;
+                    if(ch==System.ConsoleKey.Escape){
+                        System.Console.WriteLine("ESC key pressed, exit");
+                        break;
+                    }
+                    else
+                        System.Console.WriteLine($"Key pressed = {ch} , exit");
+                }
+            }
+        }
+    }
+```
+
+**build and run commands:**
+
+```bash
+    dotnet restore
+    dotnet build
+    dotnet run
+```
 
 ## python
 

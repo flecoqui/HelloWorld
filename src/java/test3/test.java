@@ -1,21 +1,15 @@
 import java.util.Scanner; 
-
 class Program
 { 
     public static void main(String []args) 
     { 
-        System.out.println("How is the World? M: Mad, B: Beautiful ");
+        String sunny = "sunny";
+        System.out.println("How is the World?");
         Scanner scanner = new Scanner(System.in);
-        char ch = scanner.next().charAt(0);
-        if(ch=='M'){
-            System.out.println("Hello Mad World!\n");
-        }
-        else if(ch=='B'){
-            System.out.println("Hello Beautiful World!\n");
-        }
-        else{
-            System.out.println("Hello World!\n");
-        }
-
+        String str = scanner.next();
+        if (str == null || str.isEmpty() || str.trim().isEmpty()) 
+            System.out.printf("Hello %s World!\n",sunny);
+        else
+            System.out.printf("Hello %s and %s World!\n", str, sunny);        
     } 
-} ;
+} 

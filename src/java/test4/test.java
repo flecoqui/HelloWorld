@@ -1,16 +1,19 @@
 import java.util.Scanner; 
-class Program
-{ 
+class Program {
     public static void main(String []args) 
-    { 
-        String sunny = "sunny";
-        System.out.println("How is the World?");
-        Scanner scanner = new Scanner(System.in);
-        String str = scanner.next();
-        if (str == null || str.isEmpty() || str.trim().isEmpty()) 
-            System.out.printf("Hello %s World!\n",sunny);
-        else
-            System.out.printf("Hello %s and %s World!\n", str, sunny);        
+    {  
+        System.out.printf("The World is running, press escape to exit?");
+        while(true)
+        {
+            Scanner scanner = new Scanner(System.in);
+            char ch = scanner.next().charAt(0);
 
+            if(ch==27){
+                System.out.printf("ESC key pressed, exit\n");
+                break;
+            }
+            else
+                System.out.printf("Key pressed = %c", ch);
+        }
     } 
-} ;
+}
