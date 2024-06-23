@@ -759,7 +759,7 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 ### Install Python SDK 3.10
 
-1. Download Python SDK 3.10 for Windows fromhttps://www.python.org/downloads/windows/
+1. Download Python SDK 3.10 for Windows from https://www.python.org/downloads/windows/
 2. Follow the steps to install Python SDK 3.10 on Windows
 
 ### Install Python SDK 3.10 on Linux
@@ -786,7 +786,7 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 ### Sample 1: Hello World
 
-**Source code: [test.sh](./src/python/test1/test.py)**
+**Source code: [test.py](./src/python/test1/test.py)**
 
 ```python
     print("Hello World")
@@ -800,7 +800,7 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 ### Sample 2: Key Stroke detection
 
-**Source code: [test.sh](./src/python/test2/test.py)**
+**Source code: [test.py](./src/python/test2/test.py)**
 
 ```python
     from getkey import getkey
@@ -824,7 +824,7 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 ### Sample 3: Enter string
 
-**Source code: [test.sh](./src/python/test3/test.py)**
+**Source code: [test.py](./src/python/test3/test.py)**
 
 ```python
     sunny = "sunny"
@@ -843,7 +843,7 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 ### Sample 4: Key Stroke in while loop
 
-**Source code: [test.sh](./src/python/test4/test.py)**
+**Source code: [test.py](./src/python/test4/test.py)**
 
 ```python
     from getkey import getkey
@@ -867,14 +867,163 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 ## HTML/Javascript Programming Language
 
-### Install HTML/Javascript SDK
-
 ![HTML Programming Language](./docs/README/html-lang.png)
+
+### Install Node.js
+
+Node.js is used to run locally an http server which will serve the HTML and Javascript files.
+
+### Install Node.js on Windows
+
+1. Download Node.js for Windows from https://nodejs.org/en/download/package-manager 
+2. Follow the steps to install Node.js on Windows
+
+### Install Node.js on Linux
+
+1. Run the following commands to install Node.js on Linux
+
+```bash
+    curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - 
+    sudo apt-get install -y nodejs \
+    sudo  npm install -g npm@latest 
+    sudo npm install http-server -g
+```
 
 ### Sample 1: Hello World
 
+**Source code: [index.html](./src/html/test1/index.html)**
+
+```html
+    <!doctype html>
+    <html lang="en">
+    <body>
+        <h1>Hello World</h1>
+    </body>
+    </html>
+```
+
+**Run command:**
+
+```bash
+    http-server .  -c-1
+```
+
 ### Sample 2: Key Stroke detection
+
+**Source code: [index.html](./src/html/test2/index.html) and [index.js](./src/html/test2/index.js)**
+
+```html
+    <!doctype html>
+    <html lang="en">
+    <body>
+        <h1>How is the World (M: Mad, B: Beautiful)?</h1>
+        <script src="index.js"></script>
+    </body>
+    </html>
+```
+
+```javascript
+    document.addEventListener("keypress", function(event) {
+        if (event.key === "M") {
+        alert('Hello Mad World!');
+        }
+        else if (event.key === "B") {
+        alert('Hello Beautiful World!');
+        }
+        else{
+            alert('Hello World!');
+        }
+    });
+```
+
+**Run command:**
+
+```bash
+    http-server .  -c-1
+```
 
 ### Sample 3: Enter string
 
+**Source code: [index.html](./src/html/test3/index.html) and [index.js](./src/html/test3/index.js)**
+
+```html
+    <!doctype html>
+    <html lang="en">
+    <body>
+        <h1>How is the World (enter the adjective below)?</h1>
+        <input name="status" type="text" maxlength="48" id="statusId" />
+        <button id="statusButton">Ok</button>
+        <script src="index.js"></script>
+    </body>
+    </html>
+```
+
+```javascript
+    button=document.getElementById("statusButton")
+
+    button.addEventListener("click", function(event) {
+        var status = document.getElementById("statusId").value;
+        if (status && status.length > 0) {
+        alert(`Hello ${status} World!`);
+        }
+        else {
+        alert('Hello  World!');
+        }
+    });
+```
+
+**Run command:**
+
+```bash
+    http-server .  -c-1
+```
+
 ### Sample 4: Key Stroke in while loop
+
+**Source code: [index.html](./src/html/test4/index.html) and [index.js](./src/html/test4/index.js)**
+
+```html
+    <!doctype html>
+    <html lang="en">
+    <body>
+        <h1>The World is running, press escape to exit</h1>
+        <div>
+            <div>
+            <label name="status" type="text" maxlength="48" id="statusId" width="400px"></label>
+            </div>
+            <div>
+            <label name="logs" type="text" maxlength="48" id="logId" width="400px"></label>
+            </div>  
+        </div>
+        <script src="index.js"></script>
+    </body>
+    </html>
+```
+
+```javascript
+    document.addEventListener("DOMContentLoaded", function(e) {
+    var statusCtl = document.getElementById("statusId")
+    if (statusCtl){
+        statusCtl.innerHTML = "Running"
+    }
+    });
+
+    document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        var statusCtl = document.getElementById("statusId")
+        if (statusCtl){
+            statusCtl.innerHTML = "Not running"
+        };
+    }
+    var logCtl = document.getElementById("logId");
+    if (logCtl){
+        logCtl.innerHTML = `Key ${event.key} pressed!`
+    };
+    });
+```
+
+**Run command:**
+
+```bash
+    http-server .  -c-1
+```
