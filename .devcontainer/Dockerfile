@@ -32,5 +32,14 @@ RUN npm install -g typescript \
     && npm install -g http-server \
     && npm install -g eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin \
     && npm install -g forever
-    
+
+# install go
+RUN apt update && sudo apt upgrade -y \
+    && apt install golang-go -y
+
+# install rust
+RUN apt update && sudo apt upgrade -y \
+   && apt install curl build-essential gcc make -y \
+   && apt install rustc -y
+
 RUN echo 'source /usr/share/bash-completion/completions/git' >> /home/vscode/.bashrc
