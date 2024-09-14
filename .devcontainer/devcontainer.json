@@ -37,5 +37,6 @@
 		"type=bind,source=${localEnv:HOME}${env:USERPROFILE}/.kube,target=/home/vscode/.kube",
 		"type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock"
 	  ],  
-	"postAttachCommand": "mkdir -p /home/$(id -un)/.ssh && touch /home/$(id -un)/.ssh/config && sudo chown -R vscode:vscode /var/run/docker.sock"
+	"postAttachCommand": "mkdir -p /home/$(id -un)/.ssh && touch /home/$(id -un)/.ssh/config && sudo chown -R vscode:vscode /var/run/docker.sock",
+	"postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} "
 }
